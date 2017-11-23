@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>User CRUD</title>
+        <script
+                src="lib/angular.min.js"></script>
+        <script src="view/app.js"></script>
+        <style>
+            a {
+                cursor: pointer;
+                background-color: lightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div ng-controller="UserCRUDCtrl">
+            <table>
+            	<tr>
+                    <td width="100">ID: </td>
+                    <td><input type="number" id="id" ng-model="user.id"/></td>
+                </tr>
+           		<tr>
+                    <td width="100">Nombre: </td>
+                    <td><input type="text" id="nombre" ng-model="user.nombre"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Apellido: </td>
+                    <td><input type="text" id="apellido" ng-model="user.apellido"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Email: </td>
+                    <td><input type="text" id="email" ng-model="user.email"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Usuario: </td>
+                    <td><input type="text" id="usuario" ng-model="user.usuario"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Contraseña: </td>
+                    <td><input type="password" id="clave" ng-model="user.clave"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Estado: </td>
+                    <td><input type="number" id="estado" ng-model="user.estado"/></td>
+                </tr>
+            </table>
+            <br /> <br />
+            <a ng-click="getUser(user.id)">Obtener Usuario</a>
+            <a ng-click="updateUser(user.id, user)">Actualizar Usuario</a>
+            <a ng-click="addUser(user)">Agregar Usuario</a>
+            <a ng-click="deleteUser(user.id)">Eliminar Usuario</a>
+        <br />
+        <br />
+        <p style="color: green">{{message}}</p>  
+        <p style="color:red">{{errorMessage}}</p>
+        <a ng-click="getAllUsers()">Obtener todos los Usuarios</a>
+        <br /> <br />
+        <table>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Email</th>
+					<th>Usuario</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr ng-repeat="usr in users">
+				<td width="100">{{usr.nombre}}</td>
+				<td width="100">{{usr.apellido}}</td>
+				<td width="100">{{usr.email}}</td>
+				<td width="100">{{usr.usuario}}</td>							
+			</tr>	
+		</tbody>
+		</table>
+        </div>
+    </body>
+</html>
