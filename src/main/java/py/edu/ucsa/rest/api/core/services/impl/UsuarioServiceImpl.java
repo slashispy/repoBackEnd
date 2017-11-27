@@ -1,4 +1,4 @@
-package py.edu.ucsa.rest.api.core.services;
+package py.edu.ucsa.rest.api.core.services.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import py.edu.ucsa.rest.api.core.dao.UsuarioDao;
 import py.edu.ucsa.rest.api.core.model.Usuario;
+import py.edu.ucsa.rest.api.core.services.UsuarioService;
 
 @Service("usuarioService")
 @Transactional

@@ -1,4 +1,4 @@
-package py.edu.ucsa.rest.api.core.dao;
+package py.edu.ucsa.rest.api.core.dao.impl;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Repository;
 
+import py.edu.ucsa.rest.api.core.dao.AbstractDao;
+import py.edu.ucsa.rest.api.core.dao.PerfilDao;
 import py.edu.ucsa.rest.api.core.model.Perfil;
 import py.edu.ucsa.rest.api.util.UtilidadesVarias;
 @Repository("perfilDao")
