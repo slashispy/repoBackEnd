@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import py.edu.ucsa.rest.api.core.model.Usuario;
 import py.edu.ucsa.rest.api.core.services.UsuarioService;
 import py.edu.ucsa.rest.api.util.ErrorDTO;
+import py.edu.ucsa.rest.web.dto.UsuarioDTO;
 
 @CrossOrigin
 @RestController
@@ -102,5 +103,35 @@ public class UsuarioController {
 		logger.info("Borrando todos los usuarios");
 		usuarioService.eliminarTodos();
 		return new ResponseEntity<Usuario>(HttpStatus.NO_CONTENT);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/reporte", method = RequestMethod.GET)
+	public ResponseEntity<?> getReporte(){
+		List<UsuarioDTO> usuarios = usuarioService.getReporte();
+		if(usuarios.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<UsuarioDTO>>(usuarios,HttpStatus.OK);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/reporte/activos", method = RequestMethod.GET)
+	public ResponseEntity<?> getReporteActivos(){
+		List<UsuarioDTO> usuarios = usuarioService.getReporteActivos();
+		if(usuarios.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<UsuarioDTO>>(usuarios,HttpStatus.OK);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/reporte/inactivos", method = RequestMethod.GET)
+	public ResponseEntity<?> getReporteInactivos(){
+		List<UsuarioDTO> usuarios = usuarioService.getReporteInactivos();
+		if(usuarios.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<UsuarioDTO>>(usuarios,HttpStatus.OK);
 	}
 }

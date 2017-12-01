@@ -4,24 +4,44 @@ public class UsuarioDTO {
 	private long id;
 	private String nombre;
 	private String apellido;
-	private String direccion;
-	private int edad;
+	private String nombreCompleto;
+	private String email;
 	private String usuario;
-	private String clave;
+	private Integer estado;
+	
+	
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
 	public UsuarioDTO() {
 		super();
 	}
-	public UsuarioDTO(long id, String nombre, String apellido, String direccion, int edad, String usuario,
-			String clave) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.edad = edad;
-		this.usuario = usuario;
-		this.clave = clave;
+	
+	public String getNombreCompleto() {
+		return nombreCompleto;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setNombreCompleto() {
+		this.nombreCompleto = this.nombre + " " + this.apellido;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -40,29 +60,12 @@ public class UsuarioDTO {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
+	
 	public String getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-	public String getClave() {
-		return clave;
-	}
-	public void setClave(String clave) {
-		this.clave = clave;
 	}
 	
 	

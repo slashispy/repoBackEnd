@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import py.edu.ucsa.rest.api.core.dao.UsuarioDao;
 import py.edu.ucsa.rest.api.core.model.Usuario;
 import py.edu.ucsa.rest.api.core.services.UsuarioService;
+import py.edu.ucsa.rest.web.dto.UsuarioDTO;
 
 @Service("usuarioService")
 @Transactional
@@ -80,6 +81,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public boolean isExisteUsuario(Usuario user) {
 		return getByUsuario(user.getUsuario()) != null;
+	}
+
+	@Override
+	public List<UsuarioDTO> getReporte() {
+		return dao.getReporte();
+	}
+
+	@Override
+	public List<UsuarioDTO> getReporteActivos() {
+		return dao.getReporteActivos();
+	}
+
+	@Override
+	public List<UsuarioDTO> getReporteInactivos() {
+		return dao.getReporteInactivos();
 	}
 
 }
