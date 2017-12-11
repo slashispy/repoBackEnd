@@ -10,9 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="asientos_cab")
@@ -21,14 +24,16 @@ public class Asiento implements Serializable {
 	private static final long serialVersionUID = 3103838628166979596L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	private long numeroAsiento;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_asiento")
 	private Date fechaAsiento;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_registro")
 	private Date fechaRegistro;
 	
@@ -36,7 +41,8 @@ public class Asiento implements Serializable {
 	
 	private String estado; //P:   A:
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="asiento")
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="id_asiento", nullable=false)
 	private List<DetalleAsiento> detalleAsientos;
 
 	public Integer getId() {

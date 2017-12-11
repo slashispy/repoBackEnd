@@ -5,12 +5,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import py.edu.ucsa.rest.api.core.model.CuentaContable;
 import py.edu.ucsa.rest.api.core.services.CuentaContableService;
@@ -50,29 +53,23 @@ private CuentaContableService cuentaContableService;
 		return new ResponseEntity<CuentaContable>(cuenta, HttpStatus.OK);
 	}
 	
-	// ================ CREAMOS UNA PERFIL ================
-//		@RequestMapping(value = "/", method = RequestMethod.POST)
-//		 public ResponseEntity<?> crearUsuario(@RequestBody Perfil perfil, UriComponentsBuilder ucBuilder) {
-//			 logger.info("Creando el Perfil : {}", perfil);
-//			 if (cuentaContableService.isExistePerfil(perfil)) {
-//				 logger.error("Inserción fallida. Ya existe un registro con el perfil {}", perfil.getDescripcion());
-//				 return new ResponseEntity<ErrorDTO>(new ErrorDTO(
-//						 "Inserción Fallida. Ya existe un registro con el perfil " +
-//								 perfil.getDescripcion()), HttpStatus.CONFLICT);
-//
-//			 }
-//	 if (cuentaContableService.isExisteCodigo(perfil)) {
-//	 logger.error("Inserción fallida. Ya existe perfil con el codigo {}", perfil.getCodigo());
-//	 return new ResponseEntity<ErrorDTO>(new ErrorDTO(
-//			 "Inserción Fallida. Ya existe perfil con el codigo " +
-//					 perfil.getCodigo()), HttpStatus.CONFLICT);
-//
-//}
-//			 cuentaContableService.guardarPerfil(perfil);
-//			 HttpHeaders headers = new HttpHeaders();
-//			 headers.setLocation(ucBuilder.path("/perfil/{id}").buildAndExpand(perfil.getId()).toUri());
-//			 return new ResponseEntity<String>(headers, HttpStatus.CREATED);
-//		}
+//	 ================ CREAMOS UNA CUENTA ================
+		@RequestMapping(value = "/", method = RequestMethod.POST)
+		 public ResponseEntity<?> crearUsuario(@RequestBody CuentaContable cuenta, UriComponentsBuilder ucBuilder) {
+			 logger.info("Creando el Cuenta Contable : {}", cuenta);
+			 if (cuentaContableService.isExisteCodigo(cuenta)) {
+				 logger.error("Inserción fallida. Ya existe un registro con la cuenta {}", cuenta.getNumeroCuenta());
+				 return new ResponseEntity<ErrorDTO>(new ErrorDTO(
+						 "Inserción Fallida. Ya existe un registro con la cuenta " +
+								 cuenta.getNumeroCuenta()), HttpStatus.CONFLICT);
+
+			 }
+			 
+			 cuentaContableService.guardarCuenta(cuenta);
+			 HttpHeaders headers = new HttpHeaders();
+			 headers.setLocation(ucBuilder.path("/cuenta-contable/{id}").buildAndExpand(cuenta.getId()).toUri());
+			 return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		}
 //		
 //		// ================ ACTUALIZAMOS LOS DATOS DE UN PERFIL ================ 
 //		@RequestMapping(value = "/{id}", method = RequestMethod.PUT)

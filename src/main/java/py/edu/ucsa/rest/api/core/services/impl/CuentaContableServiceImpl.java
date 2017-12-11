@@ -45,37 +45,33 @@ public class CuentaContableServiceImpl implements CuentaContableService {
 
 	@Override
 	public List<CuentaContable> getByTipo(String tipo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getByTipo(tipo);
 	}
 
 	@Override
 	public CuentaContable getByNroCuenta(String nroCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getByNroCuenta(nroCuenta);
 	}
 
 	@Override
 	public List<CuentaContable> listarCuentasHijas(CuentaContable cuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.listarCuentasHijas(cuenta);
 	}
 
 	@Override
 	public List<CuentaContable> listarAsentables() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.listarAsentables();
 	}
 
 	@Override
 	public void borrarPorCodigo(String codigo) {
-		// TODO Auto-generated method stub
+		dao.borrarPorCodigo(codigo);
 		
 	}
 
 	@Override
 	public void borrarPorId(Integer id) {
-		// TODO Auto-generated method stub
+		dao.borrarPorId(id);
 		
 	}
 }

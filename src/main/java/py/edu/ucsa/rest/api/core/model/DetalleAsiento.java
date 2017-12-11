@@ -21,11 +21,10 @@ public class DetalleAsiento implements Serializable {
 	private static final long serialVersionUID = 3103838628166979596L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name= "asiento", referencedColumnName = "id")
 	private Asiento asiento;
 	
 	@Column(name="monto_debe", nullable=true)

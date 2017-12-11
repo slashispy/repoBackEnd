@@ -63,7 +63,7 @@ public class CuentaContableDaoImpl extends AbstractDao<Integer, CuentaContable> 
 	@SuppressWarnings("unchecked")
 	public List<CuentaContable> listarTodos() {
 		List<CuentaContable> perfil = getEntityManager()
-				.createQuery("SELECT p FROM CuentaContable p ORDER BY p.descripcion ASC")
+				.createQuery("SELECT p FROM CuentaContable p ORDER BY p.id ASC")
 				.getResultList();
 		return perfil;
 	}

@@ -75,14 +75,14 @@ public class CuentaContable implements Serializable {
 	public void setNumeroCuenta(String numeroCuenta) {
 		this.numeroCuenta = numeroCuenta;
 	}
-//
-//	public CuentaContable getCuentaPadre() {
-//		return cuentaPadre;
-//	}
-//
-//	public void setCuentaPadre(CuentaContable cuentaPadre) {
-//		this.cuentaPadre = cuentaPadre;
-//	}
+
+	public CuentaContable getCuentaPadre() {
+		return cuentaPadre;
+	}
+
+	public void setCuentaPadre(CuentaContable cuentaPadre) {
+		this.cuentaPadre = cuentaPadre;
+	}
 
 	public Boolean getAsentable() {
 		return asentable;
